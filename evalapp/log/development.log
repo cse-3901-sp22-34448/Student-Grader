@@ -4290,3 +4290,1215 @@ Completed 200 OK in 8ms (Views: 5.2ms | ActiveRecord: 0.2ms | Allocations: 5314)
 
 
   [1m[36mFeedback Load (0.1ms)[0m  [1m[34mSELECT "feedbacks".* FROM "feedbacks"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStudent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.4ms)[0m  [1m[32mINSERT INTO "students" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "admin"], ["created_at", "2022-04-17 05:16:41.768535"], ["updated_at", "2022-04-17 05:16:41.768535"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2022-04-17 01:17:27 -0400
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 8.2ms | Allocations: 1940)
+  Rendered layout layouts/application.html.erb (Duration: 131.8ms | Allocations: 36616)
+Completed 200 OK in 147ms (Views: 136.9ms | ActiveRecord: 0.0ms | Allocations: 42501)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:17:31 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"admin"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/2
+Completed 302 Found in 16ms (ActiveRecord: 0.7ms | Allocations: 8247)
+
+
+Started GET "/students/2" for ::1 at 2022-04-17 01:17:31 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1180)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 3482)
+Completed 200 OK in 9ms (Views: 6.4ms | ActiveRecord: 0.2ms | Allocations: 5973)
+
+
+Started GET "/events" for ::1 at 2022-04-17 01:17:43 -0400
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:9
+  Rendered events/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 4681)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 7212)
+Completed 200 OK in 17ms (Views: 10.9ms | ActiveRecord: 0.6ms | Allocations: 10221)
+
+
+Started GET "/events/3" for ::1 at 2022-04-17 01:17:44 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered events/show.html.erb within layouts/application (Duration: 2.2ms | Allocations: 991)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 3096)
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 0.2ms | Allocations: 4651)
+
+
+Started GET "/feedback" for ::1 at 2022-04-17 01:17:45 -0400
+Processing by FeedbacksController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering feedbacks/new.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."title" ASC[0m
+  ↳ app/views/feedbacks/new.html.erb:14
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" ORDER BY "students"."name" ASC[0m
+  ↳ app/views/feedbacks/new.html.erb:18
+  Rendered feedbacks/new.html.erb within layouts/application (Duration: 13.8ms | Allocations: 5327)
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | Allocations: 7615)
+Completed 200 OK in 31ms (Views: 18.0ms | ActiveRecord: 1.0ms | Allocations: 15455)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:22:01 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 792)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 3284)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 4483)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:22:03 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"admin"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/2
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 993)
+
+
+Started GET "/students/2" for ::1 at 2022-04-17 01:22:03 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1688)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3993)
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.2ms | Allocations: 5491)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:22:11 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 8.2ms | Allocations: 447)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 2561)
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.0ms | Allocations: 2905)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:22:13 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"test"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "test"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/1
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 951)
+
+
+Started GET "/students/1" for ::1 at 2022-04-17 01:22:13 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1219)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 3327)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.2ms | Allocations: 4149)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:30:03 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 789)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 3281)
+Completed 200 OK in 7ms (Views: 6.2ms | Allocations: 4442)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:30:06 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"admin"}, "commit"=>"Login"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/2
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 1603)
+
+
+Started GET "/students/2" for ::1 at 2022-04-17 01:30:06 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1731)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 4032)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 0.2ms | Allocations: 5543)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:30:07 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/logout"):
+  
+Started GET "/" for ::1 at 2022-04-17 01:32:13 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 8.1ms | Allocations: 780)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 3290)
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.0ms | Allocations: 4460)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:32:15 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"admin"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/2
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 1003)
+
+
+Started GET "/students/2" for ::1 at 2022-04-17 01:32:15 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1733)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 4038)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.2ms | Allocations: 5537)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:32:17 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/logout"):
+  
+Started GET "/" for ::1 at 2022-04-17 01:34:08 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 425)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 2524)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 2867)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:34:18 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"test"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "test"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/1
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 953)
+
+
+Started GET "/students/1" for ::1 at 2022-04-17 01:34:18 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1722)
+  Rendered layout layouts/application.html.erb (Duration: 24.9ms | Allocations: 4232)
+Completed 200 OK in 29ms (Views: 26.8ms | ActiveRecord: 0.2ms | Allocations: 5916)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:34:19 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/logout"):
+  
+Started GET "/logout" for ::1 at 2022-04-17 01:38:03 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/logout"):
+  
+Started GET "/logout" for ::1 at 2022-04-17 01:38:40 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (Allocations: 501)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:38:40 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 813)
+  Rendered layout layouts/application.html.erb (Duration: 23.6ms | Allocations: 14829)
+Completed 200 OK in 27ms (Views: 25.7ms | Allocations: 15975)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:38:43 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"admin"}, "commit"=>"Login"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/2
+Completed 302 Found in 10ms (ActiveRecord: 1.0ms | Allocations: 4042)
+
+
+Started GET "/students/2" for ::1 at 2022-04-17 01:38:43 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 4.3ms | Allocations: 3362)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 3450)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.3ms | Allocations: 5856)
+
+
+  
+ActionView::Template::Error (undefined method `to_model' for #<ActionDispatch::Request::Session:0x00007faf209df018 @by=#<ActionDispatch::Session::CookieStore:0x00007faf1f2b95a0 @app=#<ActionDispatch::ContentSecurityPolicy::Middleware:0x00007faf1f2b9690 @app=#<ActionDispatch::PermissionsPolicy::Middleware:0x00007faf1f2b9730 @app=#<Rack::Head:0x00007faf1f2b97d0 @app=#<Rack::ConditionalGet:0x00007faf1f2b9870 @app=#<Rack::ETag:0x00007faf1f2b9960 @app=#<Rack::TempfileReaper:0x00007faf1f2b9a00 @app=#<ActionDispatch::Routing::RouteSet:0x00007faf1a883580>>, @cache_control="max-age=0, private, must-revalidate", @no_cache_control="no-cache">>>>>, @default_options={:path=>"/", :domain=>nil, :expire_after=>nil, :secure=>false, :httponly=>true, :defer=>false, :renew=>false}, @key="_evalapp_session", @cookie_only=true, @same_site=nil>, @req=#<ActionDispatch::Request GET "http://localhost:3000/students/2" for ::1>, @delegate={"session_id"=>"8981d6e7d32baa5689ac5acf349332e7", "_csrf_token"=>"KG4q7VZHdbNNjoQc_Zy81AtYsQc6g1qU-QZvubHQnlA", "flash"=>{"discard"=>[], "flashes"=>{"notice"=>"Signed out."}}, "student_id"=>2}, @loaded=true, @exists=true, @enabled=true>
+Did you mean?  to_yaml):
+    12: <% else %>
+    13: <p><%= link_to "login", login_path %></p>
+    14: <% end %>
+    15: <p><%= link_to "logout", session, method: "delete" %></p>
+  
+app/views/students/show.html.erb:15
+Started GET "/" for ::1 at 2022-04-17 01:39:15 -0400
+  
+SyntaxError (/Users/joshuavarghese/3901git/project6-group4/evalapp/config/routes.rb:9: syntax error, unexpected label, expecting `do' or '{' or '('
+  post "/signup",s to: "students#create"
+                   ^~~
+):
+  
+config/routes.rb:9: syntax error, unexpected label, expecting `do' or '{' or '('
+config/routes.rb:9: syntax error, unexpected label, expecting `do' or '{' or '('
+config/routes.rb:9: syntax error, unexpected label, expecting `do' or '{' or '('
+Started GET "/" for ::1 at 2022-04-17 01:39:29 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 799)
+  Rendered layout layouts/application.html.erb (Duration: 17.4ms | Allocations: 14814)
+Completed 200 OK in 20ms (Views: 18.9ms | Allocations: 16000)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:39:32 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"admin"}, "commit"=>"Login"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/2
+Completed 302 Found in 8ms (ActiveRecord: 0.8ms | Allocations: 4030)
+
+
+Started GET "/students/2" for ::1 at 2022-04-17 01:39:32 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1744)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 4045)
+Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 0.3ms | Allocations: 6479)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:39:33 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 423)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:39:33 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 462)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 2561)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 2904)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:39:36 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"test"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "test"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/1
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 940)
+
+
+Started GET "/students/1" for ::1 at 2022-04-17 01:39:36 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1241)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 3345)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.2ms | Allocations: 4166)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:39:37 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 388)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:39:37 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 451)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 2549)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 2877)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:39:52 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"admin"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/2
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 934)
+
+
+Started GET "/students/2" for ::1 at 2022-04-17 01:39:52 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1264)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 3368)
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 0.3ms | Allocations: 4187)
+
+
+Started GET "/events" for ::1 at 2022-04-17 01:39:55 -0400
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:9
+  Rendered events/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2650)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 5210)
+Completed 200 OK in 13ms (Views: 8.4ms | ActiveRecord: 0.6ms | Allocations: 7711)
+
+
+Started GET "/events/3" for ::1 at 2022-04-17 01:39:56 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered events/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 984)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 3088)
+Completed 200 OK in 8ms (Views: 5.0ms | ActiveRecord: 0.2ms | Allocations: 4623)
+
+
+Started GET "/feedback" for ::1 at 2022-04-17 01:39:57 -0400
+Processing by FeedbacksController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering feedbacks/new.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."title" ASC[0m
+  ↳ app/views/feedbacks/new.html.erb:14
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" ORDER BY "students"."name" ASC[0m
+  ↳ app/views/feedbacks/new.html.erb:18
+  Rendered feedbacks/new.html.erb within layouts/application (Duration: 6.2ms | Allocations: 3359)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 5641)
+Completed 200 OK in 21ms (Views: 10.7ms | ActiveRecord: 1.1ms | Allocations: 10721)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:40:27 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 408)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:40:27 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 434)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 2532)
+Completed 200 OK in 13ms (Views: 12.7ms | ActiveRecord: 0.0ms | Allocations: 2872)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:41:33 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 814)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 6033)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 7170)
+
+
+  
+ActionView::Template::Error (Missing partial sessions/_footer, application/_footer with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/Users/joshuavarghese/3901git/project6-group4/evalapp/app/views"
+  * "/Users/joshuavarghese/.rbenv/versions/3.0.3/lib/ruby/gems/3.0.0/gems/actiontext-7.0.2.3/app/views"
+  * "/Users/joshuavarghese/.rbenv/versions/3.0.3/lib/ruby/gems/3.0.0/gems/actionmailbox-7.0.2.3/app/views"
+
+Did you mean?  layouts/footer
+               action_text/contents/content
+               layouts/action_text/contents/content
+               action_text/attachables/remote_image
+               active_storage/blobs/blob
+               action_text/attachment_galleries/attachment_gallery):
+    12: 
+    13:   <body>
+    14:     <%= yield %>
+    15:     <%= render "footer" %>
+    16:   </body>
+    17: </html>
+  
+app/views/layouts/application.html.erb:15
+Started GET "/" for ::1 at 2022-04-17 01:42:15 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 811)
+  Rendered layouts/_footer.html.erb (Duration: 0.4ms | Allocations: 156)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 3623)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 4787)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:42:30 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 421)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:42:30 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 454)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 2647)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 2990)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:43:03 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"admin"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/2
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 1021)
+
+
+Started GET "/students/2" for ::1 at 2022-04-17 01:43:03 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1732)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 4188)
+Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 0.2ms | Allocations: 5671)
+
+
+Started GET "/students/2" for ::1 at 2022-04-17 01:43:15 -0400
+Processing by StudentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1685)
+  Rendered layouts/_footer.html.erb (Duration: 0.4ms | Allocations: 149)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 4489)
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 0.2ms | Allocations: 6157)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:43:16 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 402)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:43:16 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 798)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 42)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3193)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 4157)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:43:18 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"test"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "test"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/1
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 1027)
+
+
+Started GET "/students/1" for ::1 at 2022-04-17 01:43:18 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1225)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 3474)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.2ms | Allocations: 4360)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:43:20 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 385)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:43:20 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 433)
+  Rendered layouts/_footer.html.erb (Duration: 0.5ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 2626)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms | Allocations: 2955)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:43:22 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"admin"}, "commit"=>"Login"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/2
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 927)
+
+
+Started GET "/students/2" for ::1 at 2022-04-17 01:43:22 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1242)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 3444)
+Completed 200 OK in 7ms (Views: 5.2ms | ActiveRecord: 0.2ms | Allocations: 4263)
+
+
+Started GET "/events/new" for ::1 at 2022-04-17 01:43:23 -0400
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/new.html.erb within layouts/application (Duration: 18.8ms | Allocations: 7597)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 50)
+  Rendered layout layouts/application.html.erb (Duration: 22.5ms | Allocations: 10023)
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 0.0ms | Allocations: 11021)
+
+
+Started POST "/events" for ::1 at 2022-04-17 01:43:54 -0400
+Processing by EventsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "event"=>{"title"=>"John's Presentation", "desc"=>"I don't know what I am doing", "time"=>"02:44"}, "commit"=>"Create Event"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:16:in `create'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("title", "desc", "created_at", "updated_at", "time") VALUES (?, ?, ?, ?, ?)[0m  [["title", "John's Presentation"], ["desc", "I don't know what I am doing"], ["created_at", "2022-04-17 05:43:54.035502"], ["updated_at", "2022-04-17 05:43:54.035502"], ["time", "2000-01-01 02:44:00"]]
+  ↳ app/controllers/events_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:16:in `create'
+Redirected to http://localhost:3000/events
+Completed 302 Found in 8ms (ActiveRecord: 1.6ms | Allocations: 3695)
+
+
+Started GET "/events" for ::1 at 2022-04-17 01:43:54 -0400
+Processing by EventsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:9
+  Rendered events/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 987)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 3380)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.1ms | Allocations: 3831)
+
+
+Started GET "/events/4" for ::1 at 2022-04-17 01:43:58 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered events/show.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1006)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 3205)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.2ms | Allocations: 4077)
+
+
+Started GET "/feedback" for ::1 at 2022-04-17 01:44:00 -0400
+Processing by FeedbacksController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering feedbacks/new.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."title" ASC[0m
+  ↳ app/views/feedbacks/new.html.erb:14
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" ORDER BY "students"."name" ASC[0m
+  ↳ app/views/feedbacks/new.html.erb:18
+  Rendered feedbacks/new.html.erb within layouts/application (Duration: 5.7ms | Allocations: 3258)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 47)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 5656)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.3ms | Allocations: 6614)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:06 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 413)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:06 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 449)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 2642)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 2985)
+
+
+Started GET "/events" for ::1 at 2022-04-17 01:46:12 -0400
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:9
+  Rendered events/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 737)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 3140)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.1ms | Allocations: 3479)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:16 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 381)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:16 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 433)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 2626)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2954)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:17 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 393)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:17 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 433)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2626)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.0ms | Allocations: 2955)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:18 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 399)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:18 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 433)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 2626)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 2954)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:18 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 393)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:18 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 439)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | Allocations: 2632)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms | Allocations: 2960)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:18 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 396)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:18 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 427)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 2620)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 2948)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:18 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 399)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:18 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 427)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 2620)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 2948)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:18 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 393)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:18 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 442)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 2635)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2963)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:18 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 405)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:18 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 439)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 2632)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 2960)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:19 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 411)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:19 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 427)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 2620)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 2948)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:19 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 402)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:19 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 433)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 2641)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 2969)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:19 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 408)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:19 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 424)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 2617)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 2945)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:19 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 384)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:19 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 463)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 2656)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 2985)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:19 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 393)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:19 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 424)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 2617)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.0ms | Allocations: 2945)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:46:19 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 384)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:46:19 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 439)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 2647)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms | Allocations: 2975)
+
+
+Started GET "/events" for ::1 at 2022-04-17 01:46:23 -0400
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:9
+  Rendered events/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 705)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 3126)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.1ms | Allocations: 3463)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:52:57 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (Allocations: 401)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:52:57 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 825)
+  Rendered layouts/_footer.html.erb (Duration: 0.6ms | Allocations: 155)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 3617)
+Completed 200 OK in 9ms (Views: 7.5ms | Allocations: 4780)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:53:01 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"admin"}, "commit"=>"Login"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/2
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 1586)
+
+
+Started GET "/students/2" for ::1 at 2022-04-17 01:53:01 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1702)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 36)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 4160)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.3ms | Allocations: 5670)
+
+
+Started GET "/events" for ::1 at 2022-04-17 01:53:05 -0400
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:9
+  Rendered events/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1122)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 36)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 3772)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.1ms | Allocations: 4759)
+
+
+Started GET "/events/4" for ::1 at 2022-04-17 01:53:07 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered events/show.html.erb within layouts/application (Duration: 6.7ms | Allocations: 4735)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 4817)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.2ms | Allocations: 5728)
+
+
+  
+ActionView::Template::Error (undefined method `Feedback' for #<Event id: 4, title: "John's Presentation", desc: "I don't know what I am doing", created_at: "2022-04-17 05:43:54.035502000 +0000", updated_at: "2022-04-17 05:43:54.035502000 +0000", time: "2000-01-01 02:44:00.000000000 +0000">
+Did you mean?  feedbacks
+               feedbacks=):
+    3: <p><%= @event.desc %></p>
+    4: <p><%= @event.time.strftime("%H:%M") %></p>
+    5: <% if current_student.name == "admin" %>
+    6: <p><%= @event.Feedback.all %></p>
+    7: <% else %>
+    8: <%= link_to "Feedback form", feedback_path %>
+    9: <% end %>
+  
+app/views/events/show.html.erb:6
+Started GET "/events/4" for ::1 at 2022-04-17 01:53:21 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered events/show.html.erb within layouts/application (Duration: 34.4ms | Allocations: 13024)
+  Rendered layouts/_footer.html.erb (Duration: 0.5ms | Allocations: 189)
+  Rendered layout layouts/application.html.erb (Duration: 40.2ms | Allocations: 15973)
+Completed 200 OK in 45ms (Views: 42.6ms | ActiveRecord: 0.2ms | Allocations: 17594)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:59:36 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 815)
+  Rendered layouts/_footer.html.erb (Duration: 0.4ms | Allocations: 155)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 3607)
+Completed 200 OK in 9ms (Views: 8.6ms | Allocations: 4771)
+
+
+Started POST "/login" for ::1 at 2022-04-17 01:59:39 -0400
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"name"=>"admin"}, "commit"=>"Login"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/students/2
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms | Allocations: 1575)
+
+
+Started GET "/students/2" for ::1 at 2022-04-17 01:59:39 -0400
+Processing by StudentsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/students_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering students/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  Rendered students/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1693)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 36)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 4151)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.2ms | Allocations: 5662)
+
+
+Started GET "/events" for ::1 at 2022-04-17 01:59:40 -0400
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:9
+  Rendered events/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1122)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 36)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 3775)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.2ms | Allocations: 4763)
+
+
+Started GET "/events/3" for ::1 at 2022-04-17 01:59:42 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mFeedback Load (0.2ms)[0m  [1m[34mSELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."event_id" = ?[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:13
+  Rendered events/show.html.erb within layouts/application (Duration: 21.8ms | Allocations: 10192)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 59)
+  Rendered layout layouts/application.html.erb (Duration: 25.9ms | Allocations: 12573)
+Completed 200 OK in 28ms (Views: 26.1ms | ActiveRecord: 0.5ms | Allocations: 13538)
+
+
+Started GET "/events/4" for ::1 at 2022-04-17 01:59:49 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mCACHE Student Load (0.0ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:12:in `current_student'
+  [1m[36mFeedback Load (0.1ms)[0m  [1m[34mSELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."event_id" = ?[0m  [["event_id", 4]]
+  ↳ app/views/events/show.html.erb:13
+  Rendered events/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1994)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 45)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 4209)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.3ms | Allocations: 5100)
+
+
+Started GET "/logout" for ::1 at 2022-04-17 01:59:55 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 400)
+
+
+Started GET "/" for ::1 at 2022-04-17 01:59:55 -0400
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 453)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 2646)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 2976)
+
+
