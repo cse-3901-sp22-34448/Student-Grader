@@ -1,0 +1,22 @@
+<h1>New Event</h1>
+
+<%= form_with model: @event do |e| %>
+  <div>
+    <%= e.label :title %><br>
+    <%= e.text_field :title %>
+  </div>
+
+  <div>
+    <%= e.label :desc %><br>
+    <%= e.text_area :desc %>
+  </div>
+
+  <div>
+    <%= e.label :time %><br>
+    <%= e.time_field :time %>
+  </div>
+
+  <div>
+    <%= e.submit %>
+  </div>
+<% end %>

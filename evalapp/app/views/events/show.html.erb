@@ -1,0 +1,7 @@
+<% if logged_in? %>
+<h1><%= @event.title %></h1>
+<p><%= @event.desc %></p>
+<p><%= @event.time.strftime("%H:%M") %></p>
+<%= link_to "Feedback form", feedback_path %>
+<% else %>
+<% end %>

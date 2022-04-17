@@ -1,0 +1,11 @@
+<h1>Login</h1>
+
+<%= form_with model: @student do |s| %>
+  <div>
+    <%= s.label :name %><br>
+    <%= s.text_field :name %>
+  </div>
+  <div>
+    <%= s.submit %>
+  </div>
+<% end %>
