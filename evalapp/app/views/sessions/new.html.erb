@@ -1,7 +1,13 @@
+<%= stylesheet_link_tag 'session.css' %>
+
+
 <%= form_for(:session, url: login_path) do |form| %>
   <div id='session-container'>
-    <%= form.label :name, "Username:", :class => 'username' %>
+    <%= form.label :name, "Username", :class => 'username' %>
     <%= form.text_field :name, :class => 'input-box' %>
+    <%= form.submit "Login", :class => 'input-button' %>
   </div>
-  <%= form.submit "Login", :class => 'input-button' %>
-<% end %>
+  <% end %>
+
+
+

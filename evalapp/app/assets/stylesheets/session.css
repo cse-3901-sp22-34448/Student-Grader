@@ -1,0 +1,58 @@
+#session-container{
+    margin: 0;
+	padding: 0;
+	display: block;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+    position: relative;
+
+}
+
+.username{
+    color: #fff;
+    font-size: 2em;
+    justify-content: center;
+	display: flex;
+	margin: 60px;
+	font-weight: bold;
+
+    padding: 50px;
+
+}
+
+.input-box{
+        width: 200px;
+        height: 15px;
+        background: lightgray;
+        justify-content: center;
+        display: flex;
+        margin: 20px auto;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+}
+
+
+.input-button{
+        width: 70px;
+        height: 40px;
+        margin: 10px auto;
+        justify-content: center;
+        display: flex;
+        color: #fff;
+        background: #573b8a;
+        font-size: 15px;
+        font-weight: bold;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        transition: .2s ease-in;
+        cursor: pointer;
+    
+}
+
+.input-button:hover{
+    background: #6d44b8;
+}

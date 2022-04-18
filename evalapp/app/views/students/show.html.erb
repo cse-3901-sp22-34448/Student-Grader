@@ -1,10 +1,9 @@
-<h1>Students#show</h1>
-<p>Find me in app/views/students/show.html.erb</p>
+<%= stylesheet_link_tag 'student.css' %>
 
 <% if logged_in? %>
 <h1>Welcome, <%= @current_student.name %>!</h1>
 <div>
-  <p><%= link_to "Today's schedule", events_path %></p>
+  <p><%= link_to "Today's schedule", events_path, :class=> "btn"%></p>
 </div>
 <% if current_student.name == "admin" %>
 <p><%= link_to "Create Event", "/events/new" %>

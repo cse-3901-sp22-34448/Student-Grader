@@ -1,0 +1,14 @@
+<%= stylesheet_link_tag 'header.css' %>
+
+<header>
+
+    <% if logged_in? %>
+        <%= link_to "Home", students_url, class: "navButton"%>
+        <span class= "right">
+        <%= link_to "Logout", logout_path, class: "navButton"%>
+        </span>    
+    <% end %>
+    
+    
+
+</header>
