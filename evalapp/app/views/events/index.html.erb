@@ -1,7 +1,7 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<%= stylesheet_link_tag 'eventsindex.css' %>
+<h1>Events</h1>
 
-<table>
+<table class="list-events">
   <tr>
     <th>Time</th>
     <th>Events</th>
@@ -12,7 +12,7 @@
     <%= event.time.strftime("%H:%M") %>
     </td>
     <td>
-    <%= link_to event.title, event %>
+    <%= link_to event.title, event, :class=> "event-title" %>
     </td>
   </tr>
 <% end %>

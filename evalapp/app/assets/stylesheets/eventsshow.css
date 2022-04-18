@@ -55,3 +55,21 @@ table, th, td {
 th {
   font-size: x-large;
 }
+
+#back-to-event {
+  background-color: #e7e7e7; 
+  color: black;
+  border: none;
+  padding: 7px 14px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  display: flex;
+  font-size: 15px;
+  margin: 50px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 2px solid white;
+  border-radius: 12px;
+}

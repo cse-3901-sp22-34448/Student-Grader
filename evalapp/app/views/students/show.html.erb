@@ -6,7 +6,7 @@
   <p><%= link_to "Today's schedule", events_path, :class=> "btn"%></p>
 </div>
 <% if current_student.name == "admin" %>
-<p><%= link_to "Create Event", "/events/new" %>
+<p><%= link_to "Create Event", "/events/new", :class=> "btn"%>
 <% end %>
 <% else %>
 <p><%= link_to "login", login_path %></p>

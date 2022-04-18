@@ -1,0 +1,34 @@
+.list-events{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.list-events td, .list-events th {
+    border: 1px solid #ddd;
+    padding: 8px;
+
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #fff;
+    color: black;
+    width: 300px;
+    
+}
+
+
+tr{
+    color:black;
+}
+
+tr:nth-child(even){
+    background-color: lightgrey;
+}
+
+tr:nth-child(odd){
+    background-color: white;
+}
