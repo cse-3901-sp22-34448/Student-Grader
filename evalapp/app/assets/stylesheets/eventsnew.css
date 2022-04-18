@@ -1,0 +1,29 @@
+#title {
+  font-size: 5vw;
+}
+
+.bg {
+  width: 80vw;
+  margin: auto;
+}
+
+
+.col-25 {
+  float: left;
+  width: 25%;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+}
+
+input[type=text], input[type=time], select, textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 12px;
+}
+
+.form{
+  margin:2px;
+}

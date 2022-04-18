@@ -1,27 +1,48 @@
-<h1>New Event</h1>
+<%= stylesheet_link_tag 'eventsnew.css' %>
+<div class='bg'>
+  <h1 id='title'>New Event</h1>
 
-<%= form_with model: @event do |e| %>
-  <div>
-    <%= e.label :title %><br>
-    <%= e.text_field :title %>
+  <%= form_with model: @event do |e| %>
+  <div class='form'>
+    <div class='col-25' id='input-presenter'>
+      <%= e.label :presenter %>
+    </div>
+    <div class='col-75'>
+      <%= e.collection_select :presenter, Student.order(:name), :name, :name %>
+    </div>
   </div>
-
-  <div>
-    <%= e.label :desc %><br>
-    <%= e.text_area :desc %>
+  <br>
+  <div class='form'>
+    <div class='col-25' id='input-time'>
+      <%= e.label :time %>
+    </div>
+    <div class='col-75'>
+      <%= e.time_field :time %>
+    </div>
   </div>
-
-  <div>
-    <%= e.label :time %><br>
-    <%= e.time_field :time %>
+  <br>
+  <br>
+  <br>
+  <div class='form'>
+    <div class='col-25' id='input-title'>
+      <%= e.label :title %>
+    </div>
+    <div class='col-75'>
+      <%= e.text_field :title %>
+    </div>
   </div>
-
-  <div>
-    <%= e.label :presenter %><br>
-    <%= e.collection_select :presenter, Student.order(:name), :name, :name %>
+  <br>
+  <div class='form'>
+    <div class='col-25' id='input-desc'>
+      <%= e.label :desc %>
+    </div>
+    <div class='col-75'>
+      <%= e.text_area :desc %>
+    </div>
   </div>
-
-  <div>
-    <%= e.submit %>
-  </div>
-<% end %>
+  <br>
+    <div>
+      <%= e.submit %>
+    </div>
+  <% end %>
+</div>

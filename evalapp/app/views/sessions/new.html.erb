@@ -1,5 +1,7 @@
 <%= form_for(:session, url: login_path) do |form| %>
-  <%= form.label :name, "Username:" %>
-  <%= form.text_field :name %>
-  <%= form.submit "Login" %>
+  <div id='session-container'>
+    <%= form.label :name, "Username:", :class => 'username' %>
+    <%= form.text_field :name, :class => 'input-box' %>
+  </div>
+  <%= form.submit "Login", :class => 'input-button' %>
 <% end %>
