@@ -3,11 +3,12 @@
 <div class='bg'>
   <div class='center' id='title-content'>
     <div class='inline'>
-      <img src="http://i.stack.imgur.com/Dj7eP.jpg" />
+      <img src="https://png.pngtree.com/png-vector/20191026/ourlarge/pngtree-avatar-vector-icon-white-background-png-image_1870181.jpg" />
       <h1 id='title'><%= @event.title %></h1>
     </div>
   <p id='subtitle'><%= @event.desc %></p>
-  <p id='time'>Starts @ <%= @event.time.strftime("%H:%M") %></p>
+  <p id='time'><%= @event.datetime.strftime("%m/%d/%Y") %></p>
+  <p id='time'>Starts @ <%= @event.datetime.strftime("%H:%M") %></p>
   </div>
   <% if (current_student.name == "admin" || current_student.name == @event.presenter) %>
     

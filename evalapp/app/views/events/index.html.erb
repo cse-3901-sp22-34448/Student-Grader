@@ -10,7 +10,7 @@
 <% @events.each do |event| %>
   <tr>
     <td>
-    <%= event.time.strftime("%H:%M") %>
+    <%= event.datetime.strftime("%m/%d/%Y @ %H:%M") %>
     </td>
     <td>
     <%= event.presenter %>
