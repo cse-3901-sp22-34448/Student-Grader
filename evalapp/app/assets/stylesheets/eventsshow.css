@@ -56,7 +56,7 @@ th {
   font-size: x-large;
 }
 
-#back-to-event {
+#back-to-event{
   background-color: #e7e7e7; 
   color: black;
   border: none;
@@ -72,4 +72,20 @@ th {
   cursor: pointer;
   border: 2px solid white;
   border-radius: 12px;
+}
+
+#create-feedback{
+  float: right;
+  background-color: #e7e7e7; 
+  color: black;
+  border: none;
+  padding: 7px 14px;
+  text-decoration: none;
+  font-size: 15px;
+  margin: 50px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 2px solid white;
+  border-radius: 12px;
+
 }

@@ -28,13 +28,15 @@
         <% end %>
       </table>
 
-  <%= link_to "Back to Schedule", events_path, :id => "back-to-event" %>
 
 
     
   <% else %>
-    <%= link_to "Feedback form", feedback_path %>
+    <%= link_to "Create Feedback", feedback_path, :id => "create-feedback" %>
   <% end %>
+
+  <%= link_to "Back to Schedule", events_path, :id => "back-to-event" %>
+
 </div>
 <% else %>
   <%= link_to "Login", login_path %>
