@@ -18,7 +18,7 @@
   width: 75%;
 }
 
-input[type=text], input[type=time], select, textarea {
+input[type=text], input[type=datetime-local], select, textarea {
   width: 100%;
   resize: vertical;
   padding: 12px;
