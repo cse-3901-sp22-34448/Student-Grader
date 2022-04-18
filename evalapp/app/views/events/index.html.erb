@@ -4,6 +4,7 @@
 <table class="list-events">
   <tr>
     <th>Time</th>
+    <th>Presenter</th>
     <th>Events</th>
   </tr>
 <% @events.each do |event| %>
@@ -11,6 +12,8 @@
     <td>
     <%= event.time.strftime("%H:%M") %>
     </td>
+    <td>
+    <%= event.presenter %>
     <td>
     <%= link_to event.title, event, :class=> "event-title" %>
     </td>
