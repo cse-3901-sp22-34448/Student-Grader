@@ -1,5 +1,5 @@
 # Evaluation App
----
+
 ## About
 This project allows an admin to create presentation events which will then be shown on an event schedule. Students can then login and can submit feedback forms for the specified event.
 Both admin and presenters, can see recieved feedback on their presentation page.
@@ -9,7 +9,7 @@ Both admin and presenters, can see recieved feedback on their presentation page.
 
 * [Ruby](https://ruby-lang.org/en)
 * [Rails](https://rubyonrails.org/)
----
+
 ## Getting started
 
 ### Running
