@@ -43,6 +43,6 @@ class FeedbacksController < ApplicationController
   end
   
   private def feedback_params
-    params.require(:feedback).permit(:score, :comment, :event_id)
+    params.require(:feedback).permit(:score, :comment, :event_id, :student_id)
   end
 end

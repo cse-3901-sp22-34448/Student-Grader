@@ -2,7 +2,7 @@
 <h1><%= @event.title %></h1>
 <p><%= @event.desc %></p>
 <p><%= @event.time.strftime("%H:%M") %></p>
-<% if current_student.name == "admin" %>
+<% if (current_student.name == "admin" || current_student.name == @event.presenter) %>
 <div>
 <table>
   <tr>

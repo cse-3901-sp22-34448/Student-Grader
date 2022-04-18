@@ -17,6 +17,11 @@
   </div>
 
   <div>
+    <%= e.label :presenter %><br>
+    <%= e.collection_select :presenter, Student.order(:name), :name, :name %>
+  </div>
+
+  <div>
     <%= e.submit %>
   </div>
 <% end %>
